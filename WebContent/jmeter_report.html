@@ -1,0 +1,114 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: linen;
+}
+
+td {
+    border-top-style: solid;
+}
+</style>
+</head>
+<body>
+
+<table style="width:100%">
+  <tr style="font-weight:bold; background-color: orange">
+    <td width="300px">Single-instance version cases</td>
+    <td>Graph Results Screenshot</td>
+    <td>Average Query Time(ms)</td>
+    <td>Average Search Servlet Time(ms)</td>
+    <td>Average JDBC Time(ms)</td>
+    <td>Analysis</td>
+  </tr>
+  <tr>
+    <td>Case 1: HTTP/1 thread</td>
+    <td><img src="assets/images/Instance/1.png" alt="Graph Results Screenshot Case 1" style="width:304px;height:228px;"></td>
+    <td>38</td>
+    <td>65.4</td>
+    <td>22.1</td>
+    <td>10 Threads without prepared statements get worse results compared to case 4 and 5</td>
+  </tr>
+  <tr>
+    <td>Case 2: HTTP/10 threads</td>
+    <td><img src="assets/images/Instance/2.png" alt="Graph Results Screenshot Case 2" style="width:304px;height:228px;"></td>
+    <td>44</td>
+    <td>99.4</td>
+    <td>30.1</td>
+    <td>10 Threads without connection pooling get worst results among the 5 result, the time to create a new connection cost much</td>
+  </tr>
+  <tr>
+    <td>Case 3: HTTPS/10 threads</td>
+    <td><img src="assets/images/Instance/3.png" alt="Graph Results Screenshot Case 3" style="width:304px;height:228px;"></td>
+    <td>27</td>
+    <td>14.5</td>
+    <td>5.2</td>
+    <td>just 1 thread cost few</td>
+  </tr>
+  <tr>
+    <td>Case 4: HTTP/10 threads/No prepared statements</td>
+    <td><img src="assets/images/Instance/4.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>38</td>
+    <td>49.8</td>
+    <td>10.0</td>
+    <td>compared wtih case 5, there is only tiny difference</td>
+  </tr>
+  <tr>
+    <td>Case 5: HTTP/10 threads/No connection pooling</td>
+    <td><img src="assets/images/Instance/5.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>36</td>
+    <td>49.7</td>
+    <td>9.8</td>
+    <td>compared wtih case 4, there is only tiny difference</td>
+  </tr>
+
+</table> 
+
+
+<table style="width:100%">
+  <tr style="font-weight:bold; background-color: orange">
+    <td width="300px">Scaled version cases</td>
+    <td>Graph Results Screenshot</td>
+    <td>Average Query Time(ms)</td>
+    <td>Average Search Servlet Time(ms)</td>
+    <td>Average JDBC Time(ms)</td>
+    <td>Analysis</td>
+  </tr>
+  <tr>
+    <td>Case 1: HTTP/1 thread</td>
+    <td><img src="assets/images/load_balancer/1.png" alt="Graph Results Screenshot Case 1" style="width:304px;height:228px;"></td>
+    <td>42</td>
+    <td>77.3</td>
+    <td>51.3</td>
+    <td>slightly worse compared with single instance</td>
+  </tr>
+  <tr>
+    <td>Case 2: HTTP/10 threads</td>
+    <td><img src="assets/images/load_balancer/2.png" alt="Graph Results Screenshot Case 2" style="width:304px;height:228px;"></td>
+    <td>43</td>
+    <td>81.5</td>
+    <td>60.8</td>
+    <td>without the connection pooling get the worst case again</td>
+  </tr>
+  <tr>
+    <td>Case 3: HTTP/10 threads/No prepared statements</td>
+    <td><img src="assets/images/load_balancer/3.png" alt="Graph Results Screenshot Case 3" style="width:304px;height:228px;"></td>
+    <td>36</td>
+    <td>36.9</td>
+    <td>25.9</td>
+    <td>compare to the sigle instance, the case is worse, the reason maybe the overhead of the connection betweent the server and database and load balancer</td>
+  </tr>
+  <tr>
+    <td>Case 4: HTTP/10 threads/No connection pooling</td>
+    <td><img src="assets/images/load_balancer/4.png" alt="Graph Results Screenshot Case 4" style="width:304px;height:228px;"></td>
+    <td>43</td>
+    <td>77.2</td>
+    <td>50.7</td>
+    <td>for 10 threads the case is almost the same with the single instance. the overhead effect is weakened.</td>
+  </tr>
+
+</table> 
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<Context path="/fabflix">
+
+	<Resource name="jdbc/FablixDB" auth="Container" type="javax.sql.DataSource"
+		maxTotal="100" maxIdle="30" maxWaitMillis="10000" username="root"
+		password="950205jmy" driverClassName="com.mysql.jdbc.Driver"
+		validationQuery="select 1"
+		url="jdbc:mysql://localhost:3306/moviedb?autoReconnect=true&amp;useSSL=false&amp;cachePrepStmts=true" />
+		
+	<Resource name="jdbc/Master" auth="Container" type="javax.sql.DataSource"
+		maxTotal="100" maxIdle="30" maxWaitMillis="10000" username="root"
+		password="950205jmy" driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://172.31.42.93:3306/moviedb?autoReconnect=true&amp;useSSL=false&amp;cachePrepStmts=true" />
+
+</Context>
+
+

@@ -1,0 +1,9 @@
+We apply the substring matching in following parts:
+
+1.Searching by movie title, we use the '%AN%' pattern
+
+2.Searching by movie director, we use the '%AN%' pattern
+
+3.Searching by movie star, we use the '%AN%' pattern
+
+4.Browsing by movie title initial, we use the 'A%' pattern
